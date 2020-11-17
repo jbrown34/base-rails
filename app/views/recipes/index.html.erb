@@ -1,0 +1,182 @@
+<div>
+  <div>
+    <h1>
+      List of all recipes
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new recipe
+    </h2>
+
+    <form action="/insert_recipe" method="post">
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name">
+      </div>
+
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id">
+      </div>
+
+      <div>
+        <label for="prep_duration_box">
+          Prep duration
+        </label>
+
+        <input type="text" id="prep_duration_box" name="query_prep_duration">
+      </div>
+
+      <div>
+        <label for="cook_duration_box">
+          Cook duration
+        </label>
+
+        <input type="text" id="cook_duration_box" name="query_cook_duration">
+      </div>
+
+      <div>
+        <label for="main_ingredient_box">
+          Main ingredient
+        </label>
+
+        <input type="text" id="main_ingredient_box" name="query_main_ingredient">
+      </div>
+
+      <div>
+        <label for="ingredient2_box">
+          Ingredient2
+        </label>
+
+        <input type="text" id="ingredient2_box" name="query_ingredient2">
+      </div>
+
+      <div>
+        <label for="description_box">
+          Description
+        </label>
+
+        <input type="text" id="description_box" name="query_description">
+      </div>
+
+      <button>
+        Create recipe
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table>
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Name
+        </th>
+
+        <th>
+          User
+        </th>
+
+        <th>
+          Prep duration
+        </th>
+
+        <th>
+          Cook duration
+        </th>
+
+        <th>
+          Main ingredient
+        </th>
+
+        <th>
+          Ingredient2
+        </th>
+
+        <th>
+          Description
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_recipes.each do |a_recipe| %>
+      <tr>
+        <td>
+          <%= a_recipe.id %>
+        </td>
+
+        <td>
+          <%= a_recipe.name %>
+        </td>
+
+        <td>
+          <%= a_recipe.user_id %>
+        </td>
+
+        <td>
+          <%= a_recipe.prep_duration %>
+        </td>
+
+        <td>
+          <%= a_recipe.cook_duration %>
+        </td>
+
+        <td>
+          <%= a_recipe.main_ingredient %>
+        </td>
+
+        <td>
+          <%= a_recipe.ingredient2 %>
+        </td>
+
+        <td>
+          <%= a_recipe.description %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_recipe.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_recipe.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/recipes/<%= a_recipe.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

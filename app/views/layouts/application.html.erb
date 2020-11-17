@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>FinalProject</title>
+<head>
+    <title>Final Project - Jeremy Brown</title>
     <%= csrf_meta_tags %>
 
     <!-- Expand the number of characters we can use in the document beyond basic ASCII 🎉 -->
@@ -12,10 +12,91 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
 
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #333;
+    }
+
+    li {
+      float: left;
+    }
+
+    li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    li a:hover {
+      background-color: #111;
+    }
+
+  
+    .center {
+      padding: 20px 0;
+      text-align: center;
+      display: inline-block;
+      display:inline;
+    }
+
+    body { padding: 70px 70px 70px 70px }
+    
+    .panel {padding: 25px}
+    
+    .container { padding: 2% }
+    
+    </style>
   </head>
 
+   <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-center">
+
+    <% if @current_user == nil %>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/recipes">Recipes</a></li>
+        <li><a href="/about">About</a></li>
+        <li style="float:right"><a class="active" href="/user/user_sign_up"> Sign Up </a></li>
+        <li style="float:right"><a class="active" href="/user_sign_in"> Sign In </a></li>
+      </ul>
+    <% else %>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/recipes">Recipes</a></li>
+        <li><a href="/about">About</a></li>
+        <li style="float:right"><a class="active" href="/user/<%= @current_user.id%>"> User Page </a></li>
+        <li style="float:right"><a class="active" href="/user_sign_out"> Sign Out</li>
+      </ul>
+    <% end%>
+    </div>
+  </nav>
+
   <body>
+  
+ 
+
+    <%# flash messages %>
+
     <%= yield %>
-  </body>
+
+ </body>
+
+<div class= "container">
+    <div class="panel panel-default">
+      <div class="panel-footer">
+        Created by Jeremy Brown for Application Developement (Sect. 85), Autumn 2020
+      </div>
+    </div>
+  </div>
+</div>
 </html>
